@@ -89,6 +89,7 @@ const Map = (props) => {
     // asking permission to navigator to set location
     useEffect(() => {
         watchLocation()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // set centre and origin with current position

@@ -42,44 +42,47 @@ function UserProfile(props) {
     const uid = JSON.parse(localStorage.getItem('userId'))
 
     // set state
-    useEffect(() => {
-        const userId = JSON.parse(localStorage.getItem('userId'))
-        const isNewUser = JSON.parse(localStorage.getItem('isNewUser'))
+    useEffect(
+        (props) => {
+            const userId = JSON.parse(localStorage.getItem('userId'))
+            const isNewUser = JSON.parse(localStorage.getItem('isNewUser'))
 
-        let initUserData = ''
-        try {
-            initUserData = JSON.parse(localStorage.getItem('localUser'))
-        } catch (e) {
-            console.log(e)
-            initUserData = '' // set default value if localStorage parsing failed
-        }
+            let initUserData = ''
+            try {
+                initUserData = JSON.parse(localStorage.getItem('localUser'))
+            } catch (e) {
+                console.log(e)
+                initUserData = '' // set default value if localStorage parsing failed
+            }
 
-        props.setIsNewUser(isNewUser)
+            props.setIsNewUser(isNewUser)
 
-        //new user with no details in back end
-        if (isNewUser) {
-            setIsNewUser(true)
-            setIsLoading(false)
-            // existing user
-        } else if (!isNewUser && typeof initUserData === 'object') {
-            getUserByUid(userId)
-                .then((user) => {
-                    setUserData(user)
+            //new user with no details in back end
+            if (isNewUser) {
+                setIsNewUser(true)
+                setIsLoading(false)
+                // existing user
+            } else if (!isNewUser && typeof initUserData === 'object') {
+                getUserByUid(userId)
+                    .then((user) => {
+                        setUserData(user)
 
-                    localStorage.setItem('localUser', JSON.stringify(user))
-                    setIsLoading(false)
-                })
-                .catch((err) => {
-                    if (err) {
-                        setIsNewUser(true)
-                    }
-                })
-            // new user after details submit
-        } else if (!isNewUser && initUserData.length === 0) {
-            setIsLoading(false)
-            setIsNewUser(true)
-        }
-    }, [userEdited, showUserEdit])
+                        localStorage.setItem('localUser', JSON.stringify(user))
+                        setIsLoading(false)
+                    })
+                    .catch((err) => {
+                        if (err) {
+                            setIsNewUser(true)
+                        }
+                    })
+                // new user after details submit
+            } else if (!isNewUser && initUserData.length === 0) {
+                setIsLoading(false)
+                setIsNewUser(true)
+            }
+        },
+        [userEdited, showUserEdit]
+    )
 
     const handleNewUserSubmit = (event) => {
         const userId = JSON.parse(localStorage.getItem('userId'))

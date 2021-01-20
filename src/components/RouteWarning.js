@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React, useEffect } from 'react'
 var polyline = require('google-polyline')
 
 function RouteWarning(props) {
@@ -46,7 +46,7 @@ function RouteWarning(props) {
         })
 
         const matches = crimeCoordSum.filter((element) => {
-            routeCoordSum.includes(element)
+            return routeCoordSum.includes(element)
         })
 
         // console.log(crimeCoordSum, 'CRIMES')
