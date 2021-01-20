@@ -1,8 +1,7 @@
 import Axios from 'axios'
 
-// change base url when hosted backend
 const newsApi = Axios.create({
-    baseURL: 'https://safe-home-api.herokuapp.com/api',
+    baseURL: 'https://safe-home-backend-api.herokuapp.com/api',
 })
 
 export const getUsers = async () => {
