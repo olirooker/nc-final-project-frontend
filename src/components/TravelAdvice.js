@@ -4,7 +4,7 @@ function TravelAdvice(props) {
     return (
         <div className='travelAdviceContent'>
             <div className='travelDetails'>
-                <h2>Travel Advice - Dont be an idiot</h2>
+                <h2>Travel Advice</h2>
                 <p>
                     {' '}
                     1. Safety in numbers Always stay within a group when

@@ -45,7 +45,7 @@ function UserProfile(props) {
     useEffect(
         (props) => {
             const userId = JSON.parse(localStorage.getItem('userId'))
-            const isNewUser = JSON.parse(localStorage.getItem('isNewUser'))
+            const newUser = JSON.parse(localStorage.getItem('isNewUser'))
 
             let initUserData = ''
             try {
@@ -55,10 +55,10 @@ function UserProfile(props) {
                 initUserData = '' // set default value if localStorage parsing failed
             }
 
-            props.setIsNewUser(isNewUser)
+            // setIsNewUser(newUser)
 
             //new user with no details in back end
-            if (isNewUser) {
+            if (newUser) {
                 setIsNewUser(true)
                 setIsLoading(false)
                 // existing user

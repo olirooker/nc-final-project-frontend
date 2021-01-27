@@ -71,7 +71,6 @@ const Login = (props) => {
                 const displayName = result.user.displayName
                 //use methods on props to change state in App.js
                 localStorage.setItem('isNewUser', JSON.stringify(newUser))
-
                 props.setId(uid)
                 props.setLoggedIn(true)
                 props.setUsername(displayName)
