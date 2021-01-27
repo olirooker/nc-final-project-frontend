@@ -170,7 +170,7 @@ const Login = (props) => {
 
             <GoogleLogin googleLogin={googleLogin} />
 
-            <FacebookLogin facebookLogin={facebookLogin} />
+            {/* <FacebookLogin facebookLogin={facebookLogin} /> */}
 
             <div className='signupButtonContainer'>
                 <Button
